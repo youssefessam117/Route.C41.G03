@@ -29,7 +29,8 @@ namespace Route.C41.G03PL
 
             services.AddDbContext<ApplicationDbContext>(option =>
             {
-                option.UseSqlServer("Server = .; Database = MVCApplicationG03; Trusted_Connection = True;");
+            //Configuration.GetSection("ConnectionStrings")["DefultConnection"]); GetConnectionString is A Short Hand for that method
+                option.UseSqlServer(Configuration.GetConnectionString("DefultConnection"));
             });
 
         }
