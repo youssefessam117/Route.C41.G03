@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Route.C41.G03PL.Models;
+using Route.C41.G03PL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,7 +19,7 @@ namespace Route.C41.G03PL.Controllers
         }
 
         public IActionResult Index()
-        {
+        { 
             return View();
         }
 

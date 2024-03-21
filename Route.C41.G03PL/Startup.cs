@@ -53,8 +53,6 @@ namespace Route.C41.G03PL
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
