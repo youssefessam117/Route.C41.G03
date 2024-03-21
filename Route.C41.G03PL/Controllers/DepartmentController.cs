@@ -20,7 +20,8 @@ namespace Route.C41.G03PL.Controllers
         // /Department/Index
         public IActionResult Index()
         {
-            return View();
+            var departments = _departmentRepository.GetAll();
+            return View(departments);
         }
     }
 }
