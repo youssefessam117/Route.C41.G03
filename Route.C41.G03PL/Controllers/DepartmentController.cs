@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Route.C41.G03.BLL.Interfaces;
 using Route.C41.G03.Dal.Models;
+using Route.C41.G03PL.ViewModels;
 using System;
 
 
@@ -110,6 +111,29 @@ namespace Route.C41.G03PL.Controllers
                 else
                     ModelState.AddModelError(string.Empty, "An Error Has Ocurred During Updating The Department");
                 return View(department);    
+            }
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            return Details(id,"Delete");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Department department)
+        {
+            try
+            {
+                _departmentRepository.Delete(department);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                if (env.IsDevelopment())
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                else
+                    ModelState.AddModelError(string.Empty, "An Error Has Ocurred During Updating The Department");
+                return View(department);
             }
         }
     }
