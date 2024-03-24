@@ -10,48 +10,16 @@ using System.Threading.Tasks;
 
 namespace Route.C41.G03.BLL.Repositories
 {
-    internal class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {
-        private readonly ApplicationDbContext _dbContext;
 
-        public EmployeeRepository(ApplicationDbContext dbContext) // ask clr for creating object from ApplicationDbContext
+        public EmployeeRepository(ApplicationDbContext dbContext) :base(dbContext)
         {
-            _dbContext = dbContext;
-        }
-        public int Add(Employee entity)
-        {
-            _dbContext.Add(entity);
-            return _dbContext.SaveChanges();
 
         }
-
-        public int Delete(Employee entity)
+        public IQueryable<Employee> GetEmployeesByAddress(string address)
         {
-            _dbContext.Remove(entity);
-            return _dbContext.SaveChanges();
-        }
-
-        public Employee Get(int id)
-        {
-            ///var Employee = _dbContext.Employees.Local.Where(d=>d.Id == id).FirstOrDefault();
-            ///if (Employee == null)
-            ///{
-            ///    Employee = _dbContext.Employees.Where(Employee => Employee.Id == id).FirstOrDefault();
-            ///}
-            ///return Employee;
-            //return _dbContext.Employees.Find(id);
-            return _dbContext.Find<Employee>(id); // ef core 3.1 New Feature
-        }
-
-        public IEnumerable<Employee> GetAll()
-        {
-            return _dbContext.Employees.AsNoTracking().ToList();
-        }
-
-        public int Update(Employee entity)
-        {
-            _dbContext.Update(entity);
-            return _dbContext.SaveChanges();
+            return _dbContext.Employees.Where(e => EF.Functions.Like(e.Address,address)); //e.Address.ToLower() == address.ToLower()
         }
     }
 }

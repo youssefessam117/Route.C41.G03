@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Route.C41.G03.Dal.Models
 {
-    public class Department
+    public class Department : ModelBase
     {
-        public int Id { get; set; }
+
         public string Code { get; set; }
         public string Name { get; set; }
         [Display(Name = "Date Of Creation")]
