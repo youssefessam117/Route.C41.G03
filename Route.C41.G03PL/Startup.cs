@@ -36,6 +36,7 @@ namespace Route.C41.G03PL
             });
 
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 
         }
