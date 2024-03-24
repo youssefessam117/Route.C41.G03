@@ -1,4 +1,5 @@
 ﻿@model Employee
+
 @{
     ViewData["Title"] = "Create Employee";
 }
@@ -40,9 +41,9 @@
         <input asp-for="Gender" class="form-control" />
         <span asp-validation-for="Gender" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group mb-3 form-check">
         <input asp-for="IsActive" class="form-check-input" />
-        <label class="col-form-label" asp-for="IsActive"></label>
+        <label class="form-check-label" asp-for="IsActive"></label>
     </div>
     <div class="form-group">
         <label class="col-form-label" asp-for="HiringDate"></label>
@@ -55,3 +56,8 @@
     <a asp-action="Index" class=" btn btn-light">Back To List </a>
 </form>
 
+
+@section ValidationScriptsSection{
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+}
