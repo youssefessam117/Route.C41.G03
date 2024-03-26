@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<Employee>
 @{
     ViewData["Title"] = "Index";
+
+    string viewDataMessage = ViewData["Message"] as string;  // enforce type safety -> requiers Type Conversion => [Strongly typed
+    string viewBagMessage = ViewBag.message; // cant enforce Type sagety >> not require type conversion >> clr will handle that but maybe throw exption 
+
 }
 
 <h1>All Employees </h1>
