@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -56,5 +57,9 @@ namespace Route.C41.G03.Dal.Models
         public bool IsDeleted { get; set; } = false;
         public Gender Gender { get; set; }
         public EmpType EmployeeType { get; set; }
+        public int? DepartmentId { get; set; } // Forign Key Column 
+
+        // Navigational property => (one) 
+        public Department Department { get; set; }
     }
 }
