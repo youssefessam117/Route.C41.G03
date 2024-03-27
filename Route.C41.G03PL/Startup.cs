@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Route.C41.G03.BLL.Interfaces;
 using Route.C41.G03.BLL.Repositories;
 using Route.C41.G03.Dal.Data;
+using Route.C41.G03PL.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,7 @@ namespace Route.C41.G03PL
                 option.UseSqlServer(Configuration.GetConnectionString("DefultConnection"));
             });
 
-            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddApplicationServices(); // My extension method for redupality
 
 
         }
